@@ -1,0 +1,106 @@
+//Use the following SQL statements in the following order for the Library Relational Database Schema showed in FS 1030, Take Home Assignment 2.pdf
+ 
+CREATE DATABASE myLibrary;
+
+USE myLibrary;
+
+
+CREATE TABLE IF NOT EXISTS publisher(
+    name VARCHAR(160) NOT NULL PRIMARY KEY,
+    address VARCHAR(160) DEFAULT '',
+    phone VARCHAR(20)
+);
+
+
+CREATE TABLE IF NOT EXISTS book(
+    bookID INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL DEFAULT '',
+    publisherName VARCHAR(100) NOT NULL DEFAULT '',
+    FOREIGN KEY(publisherName) REFERENCES publisher(name)
+);
+
+
+CREATE TABLE IF NOT EXISTS book_authors(
+    bookID INT UNSIGNED,
+    authorName VARCHAR(100) NOT NULL DEFAULT '',
+    FOREIGN KEY(bookID) REFERENCES book(bookID)
+);
+
+
+CREATE TABLE IF NOT EXISTS library_branch(
+    branchID INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    branchName VARCHAR(160) NOT NULL DEFAULT '',
+    address VARCHAR(160) NOT NULL DEFAULT ''
+);
+
+
+
+CREATE TABLE IF NOT EXISTS book_copies(
+    bookID INT UNSIGNED NOT NULL,
+    branchID INT UNSIGNED NOT NULL,
+    noOfCopies INT UNSIGNED NOT NULL,
+    FOREIGN KEY(bookID) REFERENCES book(bookID),
+    FOREIGN KEY(branchID) REFERENCES library_branch(branchID)
+);
+
+
+CREATE TABLE IF NOT EXISTS borrower(
+    cardNo INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(160) NOT NULL DEFAULT '',
+    address VARCHAR(160) NOT NULL DEFAULT '',
+    phone VARCHAR(20) NOT NULL 
+);
+
+
+CREATE TABLE IF NOT EXISTS book_loans(
+    bookId INT UNSIGNED NOT NULL,
+    branchId INT UNSIGNED NOT NULL,
+    cardNo INT UNSIGNED NOT NULL,
+    dateOut DATE NOT NULL,
+    dueDate DATE NOT NULL,
+    FOREIGN KEY(bookID) REFERENCES book(bookID),
+    FOREIGN KEY(branchID) REFERENCES library_branch(branchID),
+    FOREIGN KEY(cardNo) REFERENCES borrower(cardNo)
+);
+
+
+INSERT INTO library_branch VALUES
+(1, 'Bradford West Gwillimbury Public Library', '425 Holland St W, Bradford, ON L3Z 0J2'),
+(2, 'Aurora Public Library', '15145 Yonge St, Aurora, ON L4G 1M1'),
+(3, 'Toronto Public Library - City Hall Branch', 'Toronto City Hall, 100 Queen St W, Toronto, ON M5H 2N3');
+
+INSERT INTO borrower VALUES
+(1, 'Michael Lewis', '27 Kings College Cir, Toronto, ON M5S', '(416)978-2011'),
+(2, 'John Cena', '33 Gerrard St W, Toronto, ON M5G 1Z4', '(416)-595-1975'),
+(3, 'Robert Pattinson', '92 Peter St, Toronto, ON M5V 2G5', '(416)-593-9200');
+
+INSERT INTO publisher VALUES
+('Doubleday', '1745 Broadway, New York, NY 10019, United States', '(212)940-7390'),
+('Penguin Random House', '320 Front St W #1400, Toronto, ON M5V 3B6, Canada', '(416)364-4449'),
+('Pearson', '80 Strand, Charing Cross, London WC2R 0RL, UK', '+44-20-7306-0603');
+
+
+INSERT INTO book VALUES
+(1, 'The Shining', 'Doubleday'),
+(2, 'I,Robot', 'Penguin Random House'),
+(3, 'Fundamentals of Database Systems (7th Edition)', 'Pearson');
+
+
+INSERT INTO book_authors VALUES
+(1, 'Stephen King'),
+(2,	'Isaac Asimov'),
+(3,	'Ramez Elmasri,Shamkant B. Navathe');
+
+
+INSERT INTO book_loans VALUES
+(1, 2, 3, '2019-08-01', '2019-08-17'),
+(2, 1, 2, '2019-08-02', '2019-08-18'),
+(3, 3, 1, '2019-08-03', '2019-08-19');
+
+INSERT INTO book_copies VALUES
+(1, 2, 10),
+(2, 3, 11),
+(3, 1, 12);
+
+
+

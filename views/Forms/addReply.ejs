@@ -1,0 +1,9 @@
+<% for(let i=0; i < result1.length; i++) {%>
+<div class="form-group">
+    <form action="/Forms/<%=result1[i].id%>" method="POST">
+        <label>Add New Comment</label>
+        <textarea class="form-control" id="formGroupExampleInput2" rows="3" name="comment" placeholder="Add your comment"></textarea>
+         <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+    </form>
+</div>
+<% } %>

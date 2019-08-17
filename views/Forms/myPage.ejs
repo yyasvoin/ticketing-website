@@ -1,0 +1,43 @@
+<%- include('../partials/header'); -%>
+  <head>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  </head>
+  <body class="p-3 mb-2 bg-dark text-black">
+
+
+    <div class="container form-title" style="background-color: #b4d2f0;" >
+        <h1 class="display-5" style="color: #5e5863;">FS1030 - My Customers Support Tickets Website</h1>
+<div class="table-wrapper">
+    <table class="table table-hovered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Ticket ID</th>
+                <th scope="col">Short Desription</th>  				
+                <th scope="col">Status</th>
+                <th scope="col">Comments</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+		<% for(let i=0; i < parameters.length; i++) {%>
+            <tr>
+                <th scope="row"><%= parameters[i].id %></th>
+                <td><%= parameters[i].subject %></td>        
+                <td><%= parameters[i].status %></td>              
+                <td>
+                    <a href="/Forms/<%=parameters[i].id%>" rel="noopener" class="btn btn-sm btn-success">View ticket details or Add Comments</a>
+                </td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+
+
+</div>
+</div>
+
+
+<%- include('../partials/footer'); -%>
+

@@ -1,0 +1,29 @@
+<%- include('../partials/header'); -%>
+
+<div class="container form-title" style="width: 600px;">
+    <h1>Create a New Support Ticket</h1>
+</div>
+
+<div class="jumbotron" style="width: 95rem;">
+    <form action="/Forms" method="POST">
+        <div class="form-group">
+            <label>Short Description</label>
+            <input type="text" name="subject" class="form-control" placeholder="Enter short description">
+        </div>
+        <div class="form-group">
+            <label>Details</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="details" placeholder="Details"></textarea>
+        </div>
+		<div class="form-group">
+                    <label>Ticket Status</label>
+                    <select id="status" name="status" class="form-control" required>
+                        <option selected disabled>Choose Status</option>
+                        <option>Open</option>
+                        <option>Resolved</option>
+                    </select>
+                </div>
+         <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+    </form>
+</div>
+
+<%- include('../partials/footer'); -%>
