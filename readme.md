@@ -1,4 +1,4 @@
-Description: FS1030 Database Design and Principles, Take Home Assignment #2 
+## Description: FS1030 Database Design and Principles, Take Home Assignment #2 
 
 
 Used: MySQL ,HTML, CSS, Node, Express
@@ -6,6 +6,8 @@ Used: MySQL ,HTML, CSS, Node, Express
 Part 1 : "SQL statements" folder
 
 Write SQL statements for the Library Relational Database Schema attached. Specify the appropriate keys and referential triggered actions. Insert at least 3 records in each table. 
+
+
 
 Part 2 : 
 
