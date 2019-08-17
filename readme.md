@@ -3,13 +3,13 @@
 
 Used: MySQL ,HTML, CSS, Node, Express
 
-Part 1 : "SQL statements" folder
+### Part 1 : "SQL statements" folder
 
 Write SQL statements for the Library Relational Database Schema attached. Specify the appropriate keys and referential triggered actions. Insert at least 3 records in each table. 
 
+![pic](https://user-images.githubusercontent.com/47508500/63208655-fb9c3a00-c0a4-11e9-9ed0-ad2308c579bb.png)
 
-
-Part 2 : 
+### Part 2 : 
 
  -Create .env file with the following:
 
